@@ -85,7 +85,7 @@ const PROJECTS = [
     context: 'Capstone Project',
     desc: 'AI-powered educational platform and chatbot built to help students learn interactively with progress tracking.',
     tech: ['JavaScript', 'AI', 'Node.js'],
-    image: '/learnper.png',
+    image: './learnper.png',
     actionUrl: '#',
     actionType: 'private',
   },
@@ -94,7 +94,7 @@ const PROJECTS = [
     context: null,
     desc: 'A public facility damage reporting application featuring interactive maps to streamline communication between citizens and city government.',
     tech: ['JavaScript', 'Webpack', 'Leaflet.js', 'API'],
-    image: '/citycare.png',
+    image: './citycare.png',
     actionUrl: 'https://vinviri.github.io/citycareapp/',
     actionType: 'demo',
     actionNote: '(Bypass login or use a dummy account to view the map dashboard)',
@@ -104,7 +104,7 @@ const PROJECTS = [
     context: null,
     desc: 'An interactive storytelling platform where users can share and explore user-generated stories pinned to specific geographic coordinates across Indonesia.',
     tech: ['JavaScript', 'Maps API', 'Frontend'],
-    image: '/storymap.png',
+    image: './storymap.png',
     actionUrl: 'https://vinviri.github.io/STORYMAP-APP/',
     actionType: 'demo',
     actionNote: '(Bypass login to view the map)',
@@ -114,7 +114,7 @@ const PROJECTS = [
     context: 'Educational Game',
     desc: 'Interactive web-based educational game designed to help elementary students learn how to categorize waste (Organic, Inorganic, Hazardous) using drag-and-drop mechanics.',
     tech: ['JavaScript', 'HTML5', 'CSS3', 'Game UI'],
-    image: '/edukasi-sampah.png',
+    image: './edukasi-sampah.png',
     actionUrl: '#',
     actionType: 'private',
   },
@@ -285,8 +285,7 @@ function HeroGraphic() {
       {/* Main Image Container */}
       <div className="relative bg-surface border border-border p-2.5 rounded-2xl shadow-sm transition-transform duration-500 group-hover:-translate-y-1">
         <div className="aspect-[4/5] bg-bg rounded-xl overflow-hidden flex flex-col items-center justify-center border border-border dot-grid">
-          
-          <img src="/foto-profil.jpg" alt="Rafi Satria" className="w-full h-full object-cover" />
+          <img src="./foto-profil.jpg" alt="Rafi Satria" className="w-full h-full object-cover" />
         </div>
       </div>
       
