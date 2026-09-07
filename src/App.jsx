@@ -10,6 +10,7 @@ import {
   Cloud,
   MapPin,
   Gamepad2,
+  Lock,
 } from 'lucide-react';
 
 /* ─── Brand SVG icons ─── */
