@@ -58,7 +58,11 @@
     margin: 1.5cm; /* standard print margin */
   }
 
-  body {
+  html, body, #root, .min-h-screen {
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    position: static !important;
     background-color: #FFFFFF !important;
     color: #1C1C1C !important;
     font-size: 11pt !important;
