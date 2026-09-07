@@ -10,8 +10,6 @@ import {
   Cloud,
   MapPin,
   Gamepad2,
-  Lock,
-  Printer,
 } from 'lucide-react';
 
 /* ─── Brand SVG icons ─── */
@@ -200,7 +198,7 @@ function Navbar() {
 
   return (
     <header
-      className={`print:hidden fixed top-0 inset-x-0 z-50 transition-all duration-200 ${
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-200 ${
         scrolled
           ? 'bg-bg/90 backdrop-blur-md border-b border-border'
           : 'bg-transparent'
@@ -325,7 +323,7 @@ function Hero() {
             and creating interactive software.
           </p>
 
-          <div className="flex flex-wrap gap-3 print:hidden">
+          <div className="flex flex-wrap gap-3">
             <a
               href="#projects"
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-text text-bg text-sm font-medium rounded-lg hover:bg-text/85 transition-colors"
@@ -342,13 +340,6 @@ function Hero() {
               <Download size={14} />
               Resume
             </a>
-            <button
-              onClick={() => window.print()}
-              className="inline-flex items-center gap-2 px-5 py-2.5 border border-border text-accent text-sm font-medium rounded-lg hover:border-accent hover:bg-accent/5 transition-colors"
-            >
-              <Printer size={14} />
-              Generate PDF
-            </button>
           </div>
         </div>
 
@@ -499,48 +490,39 @@ function ProjectCard({ project }) {
         </div>
 
         <div className="mt-auto">
-          {/* Text visible only when printing */}
-          {project.actionType === 'demo' && (
-            <p className="hidden print:block text-xs font-mono text-text-secondary">
-              Live Demo: {project.actionUrl.replace('https://', '')}
+          {project.actionType === 'demo' ? (
+            <a
+              href={project.actionUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-surface text-sm font-medium rounded-lg hover:bg-accent-hover transition-colors"
+            >
+              View Demo
+              <ExternalLink size={14} />
+            </a>
+          ) : project.actionType === 'private' ? (
+            <span
+              className="inline-flex items-center gap-2 px-4 py-2 border border-border text-text-muted text-sm font-medium rounded-lg bg-bg/50 cursor-not-allowed"
+            >
+              Private Repository
+              <Lock size={14} />
+            </span>
+          ) : (
+            <a
+              href={project.actionUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 border border-border text-text-secondary text-sm font-medium rounded-lg hover:border-border-hover hover:text-text transition-colors"
+            >
+              View GitHub
+              <Github size={14} />
+            </a>
+          )}
+          {project.actionNote && (
+            <p className="text-[11px] text-text-muted mt-2">
+              {project.actionNote}
             </p>
           )}
-
-          <div className="print:hidden">
-            {project.actionType === 'demo' ? (
-              <a
-                href={project.actionUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-surface text-sm font-medium rounded-lg hover:bg-accent-hover transition-colors"
-              >
-                View Demo
-                <ExternalLink size={14} />
-              </a>
-            ) : project.actionType === 'private' ? (
-              <span
-                className="inline-flex items-center gap-2 px-4 py-2 border border-border text-text-muted text-sm font-medium rounded-lg bg-bg/50 cursor-not-allowed"
-              >
-                Private Repository
-                <Lock size={14} />
-              </span>
-            ) : (
-              <a
-                href={project.actionUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 border border-border text-text-secondary text-sm font-medium rounded-lg hover:border-border-hover hover:text-text transition-colors"
-              >
-                View GitHub
-                <Github size={14} />
-              </a>
-            )}
-            {project.actionNote && (
-              <p className="text-[11px] text-text-muted mt-2">
-                {project.actionNote}
-              </p>
-            )}
-          </div>
         </div>
       </div>
     </div>
@@ -597,7 +579,7 @@ function Credentials() {
 
 function Footer() {
   return (
-    <footer className="print:hidden border-t border-border py-8 px-6 mt-8">
+    <footer className="border-t border-border py-8 px-6 mt-8">
       <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <span className="text-xs text-text-muted">
           © {new Date().getFullYear()} Rafi Satria Pradana
