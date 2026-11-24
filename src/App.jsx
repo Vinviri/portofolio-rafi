@@ -11,6 +11,8 @@ import {
   MapPin,
   Gamepad2,
   Lock,
+  ShieldCheck,
+  Server,
 } from 'lucide-react';
 
 /* ─── Brand SVG icons ─── */
@@ -36,36 +38,80 @@ function Linkedin({ size = 24, className = '' }) {
 const NAV_LINKS = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
+  { label: 'Experience', href: '#experience' },
   { label: 'Tech Stack', href: '#tech' },
   { label: 'Projects', href: '#projects' },
   { label: 'Credentials', href: '#credentials' },
 ];
 
+const EXPERIENCE = [
+  {
+    role: 'IT Engineer Intern',
+    org: 'Badan Siber dan Sandi Negara (BSSN)',
+    place: 'Depok, West Java',
+    date: 'Nov 2026 – Present',
+    points: [
+      'Help set up and configure servers for cybersecurity drill tests (exercise environments).',
+      'Learn Blue Team (detection and defense) and Red Team (attack simulation) workflows through exercise scenarios.',
+      'Study how security incidents are identified, handled, and responded to.',
+    ],
+  },
+  {
+    role: 'Independent Study Participant · Capstone Backend Lead',
+    org: 'Asah led by Dicoding, in association with Accenture (MSIB)',
+    place: 'Jakarta',
+    date: 'Aug 2025 – Dec 2025',
+    points: [
+      'Completed the project-based Front-End & Back-End Web Development with AI track.',
+      'Led backend work in a 5-person team building Learnper: designed the Supabase (PostgreSQL) schema and endpoints.',
+      "Connected the ML team's model to the React (Vite) frontend.",
+    ],
+  },
+];
+
 const TECH = {
-  Backend: ['Node.js', 'Python', 'PHP 8.5', 'RESTful APIs'],
-  Frontend: ['React', 'JavaScript', 'Tailwind CSS'],
-  'AI & Cloud': ['AWS (RDS, S3)', 'Azure AI', 'MLflow'],
-  'Tools & Other': ['Godot Engine', 'Figma', 'Git', 'Postman'],
+  Security: ['Incident response basics', 'Blue/Red Team concepts', 'Phishing detection', 'Server setup'],
+  Backend: ['Node.js', 'Express.js', 'PostgreSQL', 'Supabase', 'REST APIs'],
+  Frontend: ['React', 'JavaScript', 'Vite', 'Tailwind CSS'],
+  'AI & Data': ['Python', 'scikit-learn', 'Streamlit', 'Azure AI', 'Ollama'],
+  'Tools & Cloud': ['Docker', 'Git', 'Postman', 'Apache JMeter', 'AWS (RDS, S3)', 'Godot Engine'],
 };
 
 const FEATURED_PROJECTS = [
   {
+    title: 'PhishGuard: Hybrid Phishing URL Detector',
+    label: 'Cybersecurity Project',
+    icon: ShieldCheck,
+    desc: 'A locally run phishing URL checker that combines a rule engine with a Random Forest model and explains every result in plain language through a Streamlit app.',
+    details: [
+      'Rules for IP-address hosts, homograph characters, brand names in subdomains, and hidden redirects',
+      'Trained on the PhiUSIIL dataset with a domain-grouped split; evaluated on 47,074 test URLs and live phishing URLs from OpenPhish',
+      'Model bias and limitations documented openly in the repository',
+      'Privacy first: URLs are never visited, inputs are never stored, and output is defanged',
+    ],
+    tech: ['Python', 'scikit-learn', 'Streamlit', 'Random Forest', 'pytest'],
+    role: 'Personal project',
+    link: 'https://github.com/Vinviri/phishguard',
+  },
+  {
     title: 'Monolithic vs. Microservices Architecture',
     label: 'Undergraduate Thesis',
-    desc: 'A comprehensive comparative performance analysis of Monolithic and Microservices architectures built with Node.js and Docker for an Online Exam REST API.',
+    icon: Server,
+    desc: 'Comparative performance analysis of monolithic and microservices architectures for an online exam REST API, built with Node.js, PostgreSQL, and Docker.',
     details: [
-      'Load testing (JMeter)',
-      'Containerization',
-      'Handling traffic spikes',
-      'System architecture evaluation',
+      'The same API built twice: a monolith and microservices (API gateway plus auth, question, exam, and grading services)',
+      'Microservices orchestrated with Docker Compose',
+      'Load testing with Apache JMeter under multiple load scenarios',
+      'Endpoint testing with Postman',
     ],
-    tech: ['Node.js', 'Docker', 'Microservices', 'REST API', 'System Architecture'],
+    tech: ['Node.js', 'PostgreSQL', 'Docker', 'Microservices', 'Apache JMeter'],
     role: 'Sole researcher & developer',
     link: null,
   },
   {
     title: 'NPC Pathfinding System using A* Algorithm in Godot',
     label: 'Scientific Paper / Minor Thesis',
+    icon: Gamepad2,
     desc: 'Implemented the A* search algorithm for autonomous NPC navigation. NPCs dynamically find optimal paths around static obstacles on a 2D grid-based map.',
     details: [
       'Built with Godot Engine and GDScript',
@@ -82,10 +128,19 @@ const FEATURED_PROJECTS = [
 const PROJECTS = [
   {
     title: 'Learnper',
-    context: 'Capstone Project',
-    desc: 'AI-powered educational platform and chatbot built to help students learn interactively with progress tracking.',
-    tech: ['JavaScript', 'AI', 'Node.js'],
+    context: 'Capstone Project · Asah by Dicoding',
+    desc: 'AI-powered learning platform that helps users understand their learning workflow and interests. I led the backend in a 5-person team: Supabase database and endpoints, plus connecting the ML model to the React frontend.',
+    tech: ['React', 'Vite', 'Supabase', 'PostgreSQL', 'Machine Learning'],
     image: './learnper.png',
+    actionUrl: '#',
+    actionType: 'private',
+  },
+  {
+    title: 'Mina',
+    context: 'Personal Project',
+    desc: 'Pipeline that turns long-form videos into YouTube Shorts: Whisper transcription, clip selection with a local LLM, 1080×1920 subtitled rendering with FFmpeg, and automated quality checks.',
+    tech: ['Python', 'Whisper', 'FFmpeg', 'Ollama'],
+    image: null,
     actionUrl: '#',
     actionType: 'private',
   },
@@ -122,14 +177,19 @@ const PROJECTS = [
 
 const CREDENTIALS = [
   {
-    title: 'Asah by Dicoding Graduate',
-    sub: 'Front-End Web & Back-End with AI',
-    date: 'Dec 2025',
+    title: 'Junior Web Programmer',
+    sub: 'LSP Universitas Gunadarma · SKKNI competency certification',
+    date: 'Jul 2026',
   },
   {
-    title: 'Azure AI Engineer Associate Candidate',
-    sub: 'Official Certification Track',
-    date: 'Feb 2026',
+    title: 'Dicoding Indonesia · 10 courses',
+    sub: 'Back-End with JavaScript, Gen AI Apps with Microsoft Azure, Cloud & Gen AI on AWS, and more',
+    date: '2025 – 2026',
+  },
+  {
+    title: 'Asah by Dicoding Graduate',
+    sub: 'Front-End & Back-End Web Development with AI',
+    date: 'Dec 2025',
   },
   {
     title: 'ACA Cloud Computing',
@@ -319,9 +379,9 @@ function Hero() {
           </h1>
 
           <p className="text-text-secondary text-base md:text-lg leading-relaxed max-w-lg mb-10">
-            Informatics student &amp; developer<br className="hidden sm:block" />
-            building web applications, experimenting with AI,<br className="hidden sm:block" />
-            and creating interactive software.
+            Informatics graduate &amp; IT Engineer Intern at BSSN,{' '}<br className="hidden sm:block" />
+            growing into cybersecurity on top of{' '}<br className="hidden sm:block" />
+            a backend and web development foundation.
           </p>
 
           <div className="flex flex-wrap gap-3">
@@ -366,20 +426,59 @@ function About() {
 
         <div className="space-y-4 text-text-secondary leading-relaxed max-w-xl">
           <p>
-            I'm a final-year Informatics student who enjoys building things for the web. Most of my
-            time goes into backend development with Node.js and Python, but I also work on frontends
-            with React and Tailwind CSS when projects need them.
+            I'm an Informatics graduate from Universitas Gunadarma (GPA 3.89) and currently an IT
+            Engineer Intern at BSSN, Indonesia's National Cyber and Crypto Agency. There I help set up
+            servers for cybersecurity drill tests while learning how Blue and Red Teams work and how
+            security incidents are handled.
           </p>
           <p>
-            Lately I've been getting into AI — my capstone project was an educational chatbot, and
-            I've worked with Azure AI services and MLflow along the way. For my thesis, I'm
-            implementing A* pathfinding for NPC navigation in Godot Engine, which has been a good way
-            to combine algorithms with game development.
+            Before security, most of my time went into backend development with Node.js, PostgreSQL,
+            and Docker. My thesis compared monolithic and microservices architectures for an online
+            exam REST API, and in the Asah by Dicoding program I led the backend of our capstone
+            project, Learnper. PhishGuard, a phishing URL detector built with Python and machine
+            learning, is where I bring both sides together.
           </p>
           <p>
-            Outside of academics, I make video content on YouTube (Rafi Satria and Kolom Main) and
-            occasionally design interfaces in Figma.
+            Outside of work, I make video content on YouTube (Rafi Satria and Kolom Main) and built
+            Mina, a small AI pipeline that turns my long videos into Shorts.
           </p>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+/* ─── Experience ─── */
+
+function Experience() {
+  return (
+    <Section id="experience" className="py-20 px-6">
+      <div className="max-w-5xl mx-auto grid md:grid-cols-[200px_1fr] gap-8 md:gap-16">
+        <div>
+          <SectionLabel>Experience</SectionLabel>
+          <h2 className="text-lg font-semibold text-text">Where I've worked</h2>
+        </div>
+
+        <div className="space-y-10 max-w-2xl">
+          {EXPERIENCE.map((e) => (
+            <div key={e.org}>
+              <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-1">
+                <h3 className="text-base font-semibold text-text leading-snug">{e.role}</h3>
+                <span className="text-xs text-text-muted whitespace-nowrap">{e.date}</span>
+              </div>
+              <p className="text-sm text-text-muted mb-3">
+                {e.org} · {e.place}
+              </p>
+              <ul className="space-y-1.5">
+                {e.points.map((pt) => (
+                  <li key={pt} className="text-sm text-text-secondary leading-relaxed flex items-start gap-2">
+                    <span className="mt-2 shrink-0 w-1 h-1 rounded-full bg-text-muted" />
+                    {pt}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
     </Section>
@@ -395,7 +494,7 @@ function TechStack() {
         <SectionLabel>Skills</SectionLabel>
         <h2 className="text-xl font-semibold text-text mb-10">Tech Stack</h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-10">
           {Object.entries(TECH).map(([category, items]) => (
             <div key={category}>
               <h3 className="text-sm font-medium text-text mb-3">{category}</h3>
@@ -416,11 +515,12 @@ function TechStack() {
 
 function FeaturedProject({ project }) {
   const p = project;
+  const Icon = p.icon || Gamepad2;
   return (
     <div className="border border-border rounded-lg p-6 md:p-8 bg-surface mb-6">
       <div className="flex flex-wrap items-center gap-3 mb-4">
         <span className="inline-flex items-center gap-1.5 text-xs font-medium text-accent bg-accent-light px-2.5 py-1 rounded-md">
-          <Gamepad2 size={12} />
+          <Icon size={12} />
           {p.label}
         </span>
       </div>
@@ -448,7 +548,20 @@ function FeaturedProject({ project }) {
         ))}
       </div>
 
-      <p className="text-xs text-text-muted">{p.role}</p>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <p className="text-xs text-text-muted">{p.role}</p>
+        {p.link && (
+          <a
+            href={p.link}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2 border border-border text-text-secondary text-sm font-medium rounded-lg hover:border-border-hover hover:text-text transition-colors"
+          >
+            View GitHub
+            <Github size={14} />
+          </a>
+        )}
+      </div>
     </div>
   );
 }
@@ -541,7 +654,7 @@ function Projects() {
           <FeaturedProject key={p.title} project={p} />
         ))}
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {PROJECTS.map((p) => (
             <ProjectCard key={p.title} project={p} />
           ))}
@@ -619,6 +732,7 @@ export default function App() {
       <main>
         <Hero />
         <About />
+        <Experience />
         <TechStack />
         <Projects />
         <Credentials />
